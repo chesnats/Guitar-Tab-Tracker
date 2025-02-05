@@ -4,45 +4,43 @@
 
     <!-- Search Bar -->
     <div class="mb-6 flex justify-center">
-      <input
-        v-model="searchQuery"
-        type="text"
-        placeholder="Search by song title or artist..."
-        class="px-4 w-1/2 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-      />
-    </div>
+    <input
+      v-model="searchQuery"
+      type="text"
+      placeholder="Search by song title or artist..."
+      class="px-4 w-1/2 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+    >
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div
+    v-for="tab in filteredTabs"
+    :key="tab.id"
+    class="relative bg-white rounded-lg shadow-md p-6"
+  >
+    <!-- Remove Button -->
+    <button
+      @click="removeTab(tab.id)"
+      class="absolute top-2 right-2 text-red-500 hover:text-red-700"
+    >
+      ✖
+    </button>
 
-    <!-- Tabs List -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div
-        v-for="tab in filteredTabs"
-        :key="tab.id"
-        class="relative bg-white rounded-lg shadow-md p-6"
+    <h2 class="text-xl font-semibold mb-2">{{ tab.title }}</h2>
+    <p class="text-gray-600 mb-4">{{ tab.artist }}</p>
+    <div class="flex justify-between items-center">
+      <span class="text-sm text-gray-500">Difficulty: {{ tab.difficulty }}</span>
+      <router-link
+        :to="'/view/' + tab.id"
+        class="text-blue-600 hover:text-blue-800 underline"
       >
-        <!-- Remove Button -->
-        <button
-          @click="removeTab(tab.id)"
-          class="absolute top-2 right-2 text-red-500 hover:text-red-700"
-        >
-          ✖
-        </button>
-
-        <h2 class="text-xl font-semibold mb-2">{{ tab.title }}</h2>
-        <p class="text-gray-600 mb-4">{{ tab.artist }}</p>
-        <div class="flex justify-between items-center">
-          <span class="text-sm text-gray-500">Difficulty: {{ tab.difficulty }}</span>
-          <router-link
-            :to="'/view/' + tab.id"
-            class="text-blue-600 hover:text-blue-800 underline"
-          >
-            View Tab
-          </router-link>
-        </div>
-      </div>
+        View Tab
+      </router-link>
     </div>
   </div>
-</template>
+</div>
 
+  </div>
+</template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'

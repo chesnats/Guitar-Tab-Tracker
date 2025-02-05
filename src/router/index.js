@@ -39,14 +39,25 @@ const router = createRouter({
   routes,
 });
 
-// Navigation guard to redirect to login if not logged in
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('user') !== null; // Check if the user is logged in
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    next('/login'); // Redirect to login if not authenticated
-  } else {
-    next(); // Proceed if authenticated or no auth required
+router.beforeEach(async (to, from, next) => {
+  const login_data = localStorage.getItem('login_data');
+  const isAuthenticated = !!login_data; 
+
+  // Redirect to Login if unauthenticated and not on Login page
+  if (!isAuthenticated && to.name !== 'Login') {
+    if (to.name !== 'ErrorPage') {
+      next({ name: 'Login' });
+    } else {
+      next();
+    }
+  }
+  // Redirect authenticated users away from Login
+  else if (isAuthenticated && to.name === 'Login') {
+    next({ name: 'Home' });
+  }
+  // Allow navigation for all other cases
+  else {
+    next();
   }
 });
-
 export default router;
