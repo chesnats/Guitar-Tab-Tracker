@@ -9,6 +9,13 @@
         </span>
       </div>
       <pre class="bg-gray-50 p-4 rounded-lg overflow-x-auto font-mono text-sm">{{ tab.tab }}</pre>
+      <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+        <button
+        class="mb-2 mt-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100" 
+        @click="goToHome">
+        Cancel 
+        </button>
+      </div>
     </div>
     <div v-else class="text-center py-12">
       <p class="text-gray-500">Tab not found</p>
@@ -18,22 +25,26 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 
 const route = useRoute()
+const router = useRouter()  // Ensure useRouter() is imported here
 const tab = ref(null)
 
 onMounted(async () => {
-  const tabId = route.params.id // Get the tab ID from the URL
-
   try {
-    // Make an API call to fetch the tab details
-    const response = await axios.get(`http://localhost:5000/tabs/${tabId}`) // Assuming your endpoint is set up to fetch by ID
-    tab.value = response.data.tab
+    const tabId = route.params.id // Get the tab ID from the URL
+    const response = await axios.get(`http://localhost:5000/tabs/${tabId}`) // Fetch tab details by ID
+    tab.value = response.data // Assign the tab details
   } catch (error) {
     console.error('Error fetching tab:', error)
-    tab.value = null // In case of an error, ensure tab is null
+    tab.value = null // Ensure tab is null if an error occurs
   }
 })
+
+// Navigate back to the homepage
+const goToHome = () => {
+  router.push('/') // Navigate to the homepage route
+}
 </script>
