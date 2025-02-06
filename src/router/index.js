@@ -8,6 +8,10 @@ import UserProfile from '../views/UserProfile.vue'; // Import the UserProfile co
 const routes = [
   {
     path: '/',
+    redirect: { name: 'Home'},
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home,
   },

@@ -21,7 +21,7 @@
         </h2>
       </div>
       <div class="mt-10">
-        <form @submit.prevent="login" class="space-y-6">
+        <form @submit.prevent="login" @keydown.enter="login" class="space-y-6">
           <div>
             <label
               for="username"
