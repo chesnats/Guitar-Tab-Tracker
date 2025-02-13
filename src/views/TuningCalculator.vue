@@ -48,9 +48,9 @@
       </div>
 
       <div class="string-indicator mt-4 justify-center items-center text-center">
-        <h3 class="text-lg font-medium pt-5">Tuning Status:</h3>
-        <div class="flex flex-wrap gap-4">
-  <p v-for="(status, index) in tuningStatus" :key="index" class="bg-gray-200 px-4 py-2 rounded-lg">
+        <h3 class="text-lg font-medium pt-5">Tuning Status</h3>
+        <div class="flex flex-wrap gap-4 mt-8">
+  <p v-for="(status, index) in tuningStatus" :key="index" class="bg-orange-200 px-4 py-2 rounded-lg">
     String {{ index + 1 }}: {{ status }}
   </p>
 </div>

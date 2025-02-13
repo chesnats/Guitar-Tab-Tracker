@@ -1,6 +1,6 @@
 <template>
   <div class="lg:w-[100%] md:w-[90%] w-[96%] mx-auto flex gap-4">
-    <div class="lg:w-[100%] sm:w-[88%] w-full mx-auto shadow-2xl p-9 rounded-xl h-fit self-center dark:bg-white">
+    <div class="relative max-w-10xl mx-auto w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10 form-container tuning-calculator">
       <section class="border-2 border-dashed border-gray-400 p-5 rounded-xl">
         <div id="profilePreview" class="mx-auto flex mt-2 justify-center w-[141px] h-[141px]  bg-center bg-no-repeat ">
           <div id="profilePreview" :style="{ backgroundImage: profileImagePreview ? `url(${profileImagePreview})` : '' }"
@@ -252,3 +252,27 @@ async changePassword() {
   },
 };
 </script>
+<style scoped>
+.form-container {
+  position: relative;
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.form-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('src/assets/8F79kQbX2r4YhRG1k3-ezgif.com-video-to-gif-converter.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.2;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+</style>

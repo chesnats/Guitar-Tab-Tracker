@@ -15,7 +15,7 @@
 
     <!-- Only show navigation and header if not on the login page -->
     <div v-if="!isLoginPage" class=" pt-7" >
-      <nav class="bg-orange-100 py-1 shadow-lg rounded-2xl max-w-7xl mx-auto  w-full space-y-8 p-10  justify-between items-center ">
+      <nav class="bg-orange-200 py-1 shadow-lg rounded-2xl max-w-7xl mx-auto  w-full space-y-8 p-10  justify-between items-center ">
         <div class="max-w-7xl mx-auto px-4">
           <div class="flex justify-between h-16">
             
@@ -31,7 +31,7 @@
               <!-- Home Icon with Link -->
               <router-link
                 to="/"
-                class="flex items-center text-gray-600 relative group px-4 py-2 rounded-lg transition-all duration-500 hover:bg-orange-300"
+                class="flex items-center text-gray-600 relative group px-4 py-2 rounded-lg transition-all duration-500 hover:bg-orange-400 hover:text-white"
               >
                 <svg
                   class="w-5 h-5 mr-2"
@@ -53,7 +53,7 @@
               <!-- Create Icon with Link -->
               <router-link
                 to="/create"
-                class="flex items-center text-gray-600 relative group px-4 py-2 rounded-lg transition-all duration-500 hover:bg-orange-300"
+                class="flex items-center text-gray-600 relative group px-4 py-2 rounded-lg transition-all duration-500 hover:bg-orange-400 hover:text-white"
               >
                 <svg
                   class="w-5 h-5 mr-2"
@@ -75,7 +75,7 @@
               <!-- Tuning Icon with Link (New Button) -->
               <router-link
                 to="/tuning-calculator"
-                class="flex items-center text-gray-600 relative group px-4 py-2 rounded-lg transition-all duration-500 hover:bg-orange-300"
+                class="flex items-center text-gray-600 relative group px-4 py-2 rounded-lg transition-all duration-500 hover:bg-orange-400 hover:text-white"
               >
                 <svg
                   class="w-5 h-5 mr-2"
