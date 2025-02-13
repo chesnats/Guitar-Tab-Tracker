@@ -3,12 +3,13 @@ import Home from '../views/Home.vue';
 import Create from '../views/Create.vue';
 import View from '../views/View.vue';
 import Login from '../views/Login.vue';
-import UserProfile from '../views/UserProfile.vue'; // Import the UserProfile component
+import UserProfile from '../views/UserProfile.vue'; 
+import TuningCalculator from '../views/TuningCalculator.vue'; 
 
 const routes = [
   {
     path: '/',
-    redirect: { name: 'Home'},
+    redirect: { name: 'Home' },
   },
   {
     path: '/home',
@@ -34,7 +35,11 @@ const routes = [
     path: '/profile',
     name: 'UserProfile',
     component: UserProfile, 
-
+  },
+  {
+    path: '/tuning-calculator', // Add route for TuningCalculator
+    name: 'TuningCalculator',
+    component: TuningCalculator, // Link to the TuningCalculator component
   },
 ];
 
@@ -64,4 +69,5 @@ router.beforeEach(async (to, from, next) => {
     next();
   }
 });
+
 export default router;

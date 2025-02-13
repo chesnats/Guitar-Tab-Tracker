@@ -24,9 +24,7 @@
         "firebase-debug.*.log",
         "*.local"
       ],
-      "predeploy": [
-
-      ]
+      "predeploy": []
     },
     {
       "source": "server",
@@ -38,9 +36,7 @@
         "firebase-debug.*.log",
         "*.local"
       ],
-      "predeploy": [
-
-      ]
+      "predeploy": []
     }
   ]
 }
