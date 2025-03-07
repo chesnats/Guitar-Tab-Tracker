@@ -1,5 +1,5 @@
 <template>
-<div class="absolute mt-2 ml-[10px] w-[130px] z-10 h-[100px] bg-cover bg-center" style="background-image: url('src/assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
+<div class="absolute mt-2 ml-[10px] w-[130px] z-10 h-[100px] bg-cover bg-center" style="background-image: url('../assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
   <div class="relative max-w-10xl mx-auto w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10 form-container tuning-calculator">
     <h2 class="text-3xl font-bold mb-6 text-center">Guitar Tuner</h2>
     <section class="border-2 border-dashed p-5 border-gray-400  rounded-xl">
