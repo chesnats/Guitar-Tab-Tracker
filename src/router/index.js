@@ -4,7 +4,10 @@ import Create from '../views/Create.vue';
 import View from '../views/View.vue';
 import Login from '../views/Login.vue';
 import UserProfile from '../views/UserProfile.vue'; 
-import TuningCalculator from '../views/TuningCalculator.vue'; 
+import TuningGuitar from '../views/TuningGuitar.vue'; 
+import FavoritesPage from '../views/FavoritesPage.vue';
+import RejectedTabs from '../views/RejectedTabs.vue';
+import ErrorPage from '../views/ErrorPage.vue'; 
 
 const routes = [
   {
@@ -37,10 +40,26 @@ const routes = [
     component: UserProfile, 
   },
   {
-    path: '/tuning-calculator', // Add route for TuningCalculator
-    name: 'TuningCalculator',
-    component: TuningCalculator, // Link to the TuningCalculator component
+    path: '/tuning-Guitar', 
+    name: 'TuningGuitar',
+    component: TuningGuitar, 
   },
+  {
+    path: '/favorites', 
+    name: 'Favorites',
+    component: FavoritesPage, 
+  },
+  {
+    path: '/rejected', 
+    name: 'RejectedTabs',
+    component: RejectedTabs, 
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'ErrorPage',
+    component: ErrorPage,
+  }
+  
 ];
 
 const router = createRouter({
@@ -71,3 +90,4 @@ router.beforeEach(async (to, from, next) => {
 });
 
 export default router;
+

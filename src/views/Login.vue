@@ -7,7 +7,7 @@
     >
       <div class="flex flex-col items-center">
         <!-- Replace Spinner with GIF -->
-        <img src="../assets/loading.gif" alt="Loading..." class="h-70 w-70" />
+        <img src="../assets/5fe9a1430b395d6277e2dd6d40c3e4-unscreen.gif" alt="Loading..." class="h-70 w-70" />
       </div>
     </div>
     
@@ -73,19 +73,19 @@
 
                     <div class="mx-auto max-w-xs">
                         <input
-                            class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                            class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                             type="text"
                             v-model="username"
                              id="username"
                              placeholder="Username" />
                         <input
-                            class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                            class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                             v-model="password"
                             id="password"
                             type="password"
                             placeholder="Password" />
                         <button
-                            class="mt-5 tracking-wide font-semibold bg-blue-500 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                            class="mt-12 tracking-wide font-semibold bg-orange-400 hover:bg-orange-600 text-gray-100 w-full py-2 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                             <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
@@ -100,14 +100,14 @@
                                 Sign Up
                             </span>
                         </button>
-                    </div>
+                     </div>
                   </form>
                 </div>
             </div>
         </div>
         <div class="flex-1 bg-indigo-100 text-center hidden lg:flex sm:rounded-lg">
           <div class="w-full h-full bg-cover bg-center bg-no-repeat rounded-tr-lg rounded-br-lg"
-            style="background-image: url('src/assets/pinterestdownloader.com-1738900323.892426.gif');">
+            style="background-image: url('src/assets/9db8b0e441fd29f593a663a8a5b76562.gif');">
             </div>
         </div>
     </div>
@@ -128,9 +128,7 @@ export default {
       loading: false,
     };
   },
-  methods: {
-
-    
+methods: { 
 async login() {
   this.loading = true; 
   try {
@@ -143,9 +141,7 @@ async login() {
       Gui: "Verification",
     };
 
-    const response = await axios.post(`${this.stage_link}/login`, payload, {
-      headers,
-    });
+    const response = await axios.post(`${this.stage_link}/login`, payload, {headers,});
 
     if (response.status === 200) {
       console.log(response);

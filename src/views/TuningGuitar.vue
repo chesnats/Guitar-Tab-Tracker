@@ -1,13 +1,14 @@
 <template>
+<div class="absolute mt-2 ml-[10px] w-[130px] z-10 h-[100px] bg-cover bg-center" style="background-image: url('src/assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
   <div class="relative max-w-10xl mx-auto w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10 form-container tuning-calculator">
     <h2 class="text-3xl font-bold mb-6 text-center">Guitar Tuner</h2>
-
+    <section class="border-2 border-dashed p-5 border-gray-400  rounded-xl">
     <div class="mb-6">
       <label for="tuning" class="block text-sm font-medium text-gray-700">Select Tuning</label>
       <select
         id="tuning"
         v-model="selectedTuning"
-        class="mt-1 block w-full bg-gray-100 text-gray-900 border border-gray-300 rounded-lg h-10 px-2 md:w-full"
+        class="mt-1 block w-full bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-orange-400 rounded-lg h-10 px-2 md:w-full"
       >
         <option value="standard">Standard EADGBE</option>
         <option value="dropD">Drop D (DADGBE)</option>
@@ -15,52 +16,58 @@
       </select>
     </div>
     
-    <section class="border-2 border-dashed border-gray-400 p-5 rounded-xl">
+    <section class="border-2 border-dashed border-gray-400 p-5 rounded-xl custom-blur">
       <div class="tuning-display">
         <h3 class="text-lg font-medium flex justify-center">Current Tuning</h3>
-        <ul class="space-y-3">
-          <li v-for="(note, index) in guitarStrings" :key="index" class="flex justify-center py-3 gap-80">
-            <span class="font-semibold">{{ index + 1 }} String:</span>
-            <span class="font-bold bg-orange-400 rounded-xl w-10 text-center py-2 ml-14">{{ note }}</span>
-            <button @click="toggleStringMicrophone(index)" class="ml-4 bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
-              {{ isMicrophoneOn[index] ? 'Turn On' : 'Turn Off' }} Mic
+        <ul class="space-y-3 p-9">
+          <li v-for="(note, index) in guitarStrings" :key="index" class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 gap-4 sm:gap-10">
+            <span class="font-semibold sm:w-1/3">{{ index + 1 }} String:</span>
+            <span class="font-bold bg-orange-400 rounded-xl w-20 text-center py-2 sm:w-20 sm:py-3 mr-60">{{ note }}</span>
+            <button @click="toggleStringMicrophone(index)" class="mt-3 sm:mt-0 bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded-lg sm:w-auto">
+              {{ isMicrophoneOn[index] ? 'Turn Off' : 'Turn On' }} Mic
             </button>
           </li>
         </ul>
       </div>
     </section>
+
     
-    <section class="border-2 border-dashed border-gray-400 p-5 rounded-xl">
+    <section class="border-2 border-dashed border-gray-400 p-5 mt-5 rounded-xl custom-blur">
       <div class="current-note-display mt-4 flex justify-center items-center text-center">
         <p>{{ detectedNote }}</p>
       </div>
 
-      <div class="graph mt-6 flex flex-col items-center justify-center">
-        <h3 class="text-lg font-medium text-center">Tuning Graph</h3>
-        <div class="flex justify-center space-x-10 mt-10">
-          <div v-for="(note, index) in guitarStrings" :key="index" class="flex flex-col items-center">
-            <div :class="getGraphClass(index)" class="h-20 w-28 border-2 border-gray-500 rounded-lg flex items-end justify-center">
-              <span class="text-3xl pb-4 font-serif">{{ frequencies[index].toFixed(1) }}</span>
+      <div class="graph flex flex-col items-center justify-center">
+          <h3 class="text-lg font-medium text-center">Tuning Graph</h3>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 mt-10">
+            <div v-for="(note, index) in guitarStrings" :key="index" class="flex flex-col items-center">
+              <div :class="getGraphClass(index)" class="h-20 w-28 sm:h-24 sm:w-32 md:h-32 md:w-40 border-2 border-gray-500 rounded-lg flex items-end justify-center">
+                <span class="text-3xl pb-4 font-serif">{{ frequencies[index].toFixed(1) }}</span>
+              </div>
+              <span class="text-sm mt-2 sm:text-base">String {{ index + 1 }}</span>
             </div>
-            <span class="text-sm mt-2">String {{ index + 1 }}</span>
           </div>
         </div>
-      </div>
 
-      <div class="string-indicator mt-4 justify-center items-center text-center">
-        <h3 class="text-lg font-medium pt-5">Tuning Status</h3>
-        <div class="flex flex-wrap gap-4 mt-8">
-  <p v-for="(status, index) in tuningStatus" :key="index" class="bg-orange-200 px-4 py-2 rounded-lg">
-    String {{ index + 1 }}: {{ status }}
-  </p>
-</div>
+
+              <div class="string-indicator mt-4 justify-center items-center text-center">
+                <h3 class="text-lg font-medium pt-5">Tuning Status</h3>
+                <div class="flex flex-wrap gap-4 mt-8">
+          <p v-for="(status, index) in tuningStatus" :key="index" class="bg-orange-200 px-3 py-2 rounded-lg">
+            String {{ index + 1 }}: {{ status }}
+          </p>
+        </div>
 
         <p v-if="allStringsTuned" class="text-green-600 font-bold mt-4">
           All Strings Done Tuning! Final frequencies saved.
         </p>
       </div>
     </section>
-  </div>
+
+  </section>
+</div>
+  
 </template>
 
 <script>
@@ -288,7 +295,11 @@ export default {
   z-index: -1;
   border-radius: inherit;
 }
-
+.custom-blur {
+  background: rgba(183, 183, 183, 0.3);
+  backdrop-filter: blur; 
+  -webkit-backdrop-filter: blur(1px); 
+}
 .microphone-control button {
   background-color: #1D4ED8;
   color: white;
