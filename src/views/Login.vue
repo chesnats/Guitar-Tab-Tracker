@@ -69,39 +69,88 @@
                             Or sign up with Username
                         </div>
                     </div>
-                    <form @submit.prevent="login" @keydown.enter="login" class="space-y-6">
+                    <form @submit.prevent="login" @keydown.enter="login" v-if="!showRegisterForm" class="space-y-6">
 
-                    <div class="mx-auto max-w-xs">
-                        <input
-                            class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                            type="text"
-                            v-model="username"
-                             id="username"
-                             placeholder="Username" />
-                        <input
-                            class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                            v-model="password"
-                            id="password"
-                            type="password"
-                            placeholder="Password" />
-                        <button
-                            class="mt-12 tracking-wide font-semibold bg-orange-400 hover:bg-orange-600 text-gray-100 w-full py-2 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                            <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                                <circle cx="8.5" cy="7" r="4" />
-                                <path d="M20 8v6M23 11h-6" />
-                            </svg>
-                            <span
-                             :disabled="loading"
-                            class="ml-3"
-                            type="submit"
-                            >
-                                Sign Up
-                            </span>
-                        </button>
-                     </div>
-                  </form>
+                      <div class="mx-auto max-w-xs">
+                          <input
+                              class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                              type="text"
+                              v-model="username"
+                              id="username"
+                              placeholder="Username" />
+                          <input
+                              class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                              v-model="password"
+                              id="password"
+                              type="password"
+                              placeholder="Password" />
+                          <button
+                              class="mt-12 tracking-wide font-semibold bg-orange-400 hover:bg-orange-600 text-gray-100 w-full py-2 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                              <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round">
+                                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                  <circle cx="8.5" cy="7" r="4" />
+                                  <path d="M20 8v6M23 11h-6" />
+                              </svg>
+                              <span
+                              :disabled="loading"
+                              class="ml-3"
+                              type="submit"
+                              >
+                                  Sign Up
+                              </span>
+                          </button>
+                          <p class="mt-4 text-sm text-center">
+                              Don't have an account?
+                              <button @click="toggleForm" class="text-blue-600 hover:underline">Register Here</button>
+                            </p>
+                      </div>
+                      </form>
+                      <form v-if="showRegisterForm" @submit.prevent="register" class="space-y-6">
+
+                        <div class="mx-auto max-w-xs">
+                            <input
+                                class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                type="text"
+                                v-model="username"
+                                id="username"
+                                placeholder="Username" />
+                            <input
+                                class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                v-model="confirmpassword"
+                                id="confirm-password"
+                                type="password"
+                                placeholder="Password" />
+                            <input
+                                class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                v-model="password"
+                                id="password"
+                                type="password"
+                                placeholder="Confirm Password" />
+                            <button
+                                class="mt-12 tracking-wide font-semibold bg-orange-400 hover:bg-orange-600 text-gray-100 w-full py-2 rounded-lg  transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                    <circle cx="8.5" cy="7" r="4" />
+                                    <path d="M20 8v6M23 11h-6" />
+                                </svg>
+                                <span
+                                :disabled="loading"
+                                class="ml-3"
+                                type="submit"
+                                >
+                                    Register
+                                </span>
+                            </button>
+                            <p class="mt-4 text-sm text-center">
+                                Already have an account?
+                                <button @click="toggleForm" class="text-blue-600 hover:underline">Login Here</button>
+                              </p>
+                        </div>
+                        </form>
+
+
                 </div>
             </div>
         </div>
@@ -125,10 +174,18 @@ export default {
       stage_link: "https://aapistage.newalchemysolutions.com",
       username: "", 
       password: "", 
+      confirmPassword: "",
       loading: false,
+      showRegisterForm: false,
     };
   },
 methods: { 
+  toggleForm() {
+      this.showRegisterForm = !this.showRegisterForm;
+    },
+    async register() {
+      console.log("Registering with", this.username, this.email, this.password);
+    },
 async login() {
   this.loading = true; 
   try {

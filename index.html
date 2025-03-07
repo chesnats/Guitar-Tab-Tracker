@@ -4,7 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/assets/af183039240fccfd18c186abad10b6b5-removebg-preview.png" />
+    
     <title>Tab Tracker</title>
+
+    <!-- Google API Script -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Facebook SDK -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: 'YOUR_FACEBOOK_APP_ID', // Replace with your Facebook app ID
+          cookie: true,
+          xfbml: true,
+          version: 'v10.0',
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'facebook-jssdk');
+    </script>
   </head>
   <body>
     <div id="app"></div>
