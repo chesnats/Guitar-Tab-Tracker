@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute mt-2 ml-[10px] w-[130px] h-[100px] bg-cover bg-center" style="background-image: url('../assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
+  <div class="absolute mt-2 ml-[10px] w-[130px] h-[100px] bg-cover bg-center" style="background-image: url('/assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
   <div class="max-w-10xl space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
     <h1 class="text-3xl font-bold mb-6 text-center">Favorite Guitar Tabs</h1>
 

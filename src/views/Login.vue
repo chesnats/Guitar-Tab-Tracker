@@ -7,7 +7,7 @@
     >
       <div class="flex flex-col items-center">
         <!-- Replace Spinner with GIF -->
-        <img src="../assets/5fe9a1430b395d6277e2dd6d40c3e4-unscreen.gif" alt="Loading..." class="h-70 w-70" />
+        <img src="/assets/5fe9a1430b395d6277e2dd6d40c3e4-unscreen.gif" alt="Loading..." class="h-70 w-70" />
       </div>
     </div>
     
@@ -107,7 +107,7 @@
         </div>
         <div class="flex-1 bg-indigo-100 text-center hidden lg:flex sm:rounded-lg">
           <div class="w-full h-full bg-cover bg-center bg-no-repeat rounded-tr-lg rounded-br-lg"
-            style="background-image: url('src/assets/9db8b0e441fd29f593a663a8a5b76562.gif');">
+            style="background-image: url('/assets/9db8b0e441fd29f593a663a8a5b76562.gif');">
             </div>
         </div>
     </div>

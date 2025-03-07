@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute mt-2 z-10 ml-[10px] w-[130px] h-[100px] bg-cover bg-center" style="background-image: url('../assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
+  <div class="absolute mt-2 z-10 ml-[10px] w-[130px] h-[100px] bg-cover bg-center" style="background-image: url('/assets/gJW40PvAOx16R44UE4-ezgif.com-video-to-gif-converter.gif');"></div>
     <!-- Loading Overlay -->
     <div v-if="isLoading" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-3">

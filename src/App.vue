@@ -1,13 +1,13 @@
 <template>
   <div 
     class="min-h-screen bg-cover bg-center relative inset-0 bg-black bg-opacity-40" 
-    style="background-image: url('../assets/b3149b102e8afbd0e8357929e3a08ede.jpg'); background-size: cover; background-attachment: fixed;">
+    style="background-image: url('/assets/b3149b102e8afbd0e8357929e3a08ede.jpg'); background-size: cover; background-attachment: fixed;">
 
 
     <!-- Loading Overlay -->
     <div v-if="loading" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
       <div class="flex flex-col items-center">
-        <img src="../assets/5fe9a1430b395d6277e2dd6d40c3e4-unscreen.gif" alt="Loading..." class="h-70 w-70" />
+        <img src="/assets/5fe9a1430b395d6277e2dd6d40c3e4-unscreen.gif" alt="Loading..." class="h-70 w-70" />
       </div>
     </div>
 
