@@ -11,7 +11,7 @@
   </button>
   
         <!-- Recently Played Section -->
-      <section class="border-2 border-dashed border-gray-400 p-5 rounded-xl  max-h-screen ">
+      <section  v-if="showRecentlyPlayed" class="border-2 border-dashed border-gray-400 p-5 rounded-xl  max-h-screen ">
         <h2 class="text-xl font-bold mb-4">Recently Played</h2>
         <div v-if="recentlyPlayed.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           <div v-for="tab in recentlyPlayed" :key="tab.id" class="relative bg-orange-100 rounded-lg shadow-lg p-6 border-2 border-dashed border-gray-600">
@@ -149,6 +149,7 @@
         favorites: [],
         rejectedTabs: JSON.parse(localStorage.getItem('rejectedTabs')) || [],
         recentlyPlayed: [],
+        showRecentlyPlayed: true,
       };
     },
     computed: {
@@ -200,19 +201,30 @@
         this.tabs = getAllTabs();
       },
       async removeTab(tabId) {
-        try {
-          deleteTab(tabId);
-          this.removedTabIds.push(tabId);
-          this.tabs = this.tabs.filter(tab => tab.id !== tabId);
-          this.createdTabs = this.createdTabs.filter(tab => tab.id !== tabId);
-        } catch (error) {
-          console.error('Error removing tab:', error.message);
-        }
-      },
-      removeRecentlyPlayed(tabId) {
-        this.recentlyPlayed = this.recentlyPlayed.filter(tab => tab.id !== tabId);
-        localStorage.setItem('recentlyPlayed', JSON.stringify(this.recentlyPlayed));
-      },
+    try {
+      // Remove tab from regular tabs
+      deleteTab(tabId);
+      this.removedTabIds.push(tabId);
+      this.tabs = this.tabs.filter(tab => tab.id !== tabId);
+      this.createdTabs = this.createdTabs.filter(tab => tab.id !== tabId);
+
+      // Remove tab from Recently Played if it exists there
+      this.removeRecentlyPlayed(tabId);
+
+    } catch (error) {
+      console.error('Error removing tab:', error.message);
+    }
+  },
+
+  removeRecentlyPlayed(tabId) {
+    this.recentlyPlayed = this.recentlyPlayed.filter(tab => tab.id !== tabId);
+    localStorage.setItem('recentlyPlayed', JSON.stringify(this.recentlyPlayed));
+
+    // Optionally, hide the "Recently Played" section if it's empty
+    if (this.recentlyPlayed.length === 0) {
+      this.showRecentlyPlayed = false; // You can set a flag like this to hide the section in the template
+    }
+  },
       toggleDropdown() {
         this.showDropdown = !this.showDropdown;
       },
