@@ -110,7 +110,7 @@
 
               <!-- Dropdown Content -->
               <div v-show="showDropdown" class="dropdown-content absolute right-1 mt-2 w-40 bg-white rounded-md shadow-lg border border-gray-200 ">
-                <router-link to="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Profile</router-link>
+                <router-link to="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer">Change Password</router-link>
                 <div class="border-t border-gray-100"></div>
                 <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer" @click="logout">Logout</a>
               </div>
@@ -130,13 +130,12 @@
 
 
 <script>
-import axios from "axios";
+import { getAuth, signOut } from "firebase/auth";
 
 export default {
   name: "MainLayout",
   data() {
     return {
-      stage_link: "https://aapistage.newalchemysolutions.com",
       loading: false, 
       firstName: "", 
       lastName: "", 
@@ -199,21 +198,24 @@ export default {
     },
 
     async logout() {
-      this.loading = true;
-      try {
-        const headers = JSON.parse(localStorage.getItem("headers"));
-        const response = await axios.delete(`${this.stage_link}/logout`, { headers });
+  this.loading = true; // Show loading indicator
+  try {
+    const auth = getAuth();
+    await signOut(auth); // Sign out from Firebase
 
-        if (response.status === 200) {
-          localStorage.clear();
-          this.$router.push("/login");
-        }
-      } catch (error) {
-        console.error("Logout failed:", error);
-      } finally {
-        this.loading = false;
-      }
-    },
+    // Clear localStorage
+    localStorage.clear();
+
+    // Small delay to ensure the UI updates before redirecting
+    setTimeout(() => {
+      this.$router.push("/login"); 
+      this.loading = false; // Hide loading indicator after redirection
+    }, 1000);
+  } catch (error) {
+    console.error("Logout failed:", error);
+    this.loading = false; // Ensure loading state resets even if logout fails
+  }
+},
     stopLocalStorageObserver() {
       if (this.localStorageObserver) {
         clearInterval(this.localStorageObserver);
@@ -228,6 +230,7 @@ export default {
     },
   },
 };
+
 </script>
 
 

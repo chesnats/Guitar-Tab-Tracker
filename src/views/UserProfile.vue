@@ -2,7 +2,7 @@
   <div class="lg:w-[100%] md:w-[90%] w-[96%] mx-auto flex gap-4">
     <div class="lg:w-[100%] sm:w-[88%] w-full mx-auto shadow-2xl p-9 rounded-xl h-fit self-center dark:bg-white">
       <section class="border-2 border-dashed border-gray-400 p-5 rounded-xl">
-        <div id="profilePreview" class="mx-auto flex mt-2 justify-center w-[141px] h-[141px]  bg-center bg-no-repeat ">
+        <!-- <div id="profilePreview" class="mx-auto flex mt-2 justify-center w-[141px] h-[141px]  bg-center bg-no-repeat ">
         
                   <div 
                       :style="{ 
@@ -25,69 +25,69 @@
                 </label>
               </div>
             </div>
-        </div>
-        <h1 class="lg:text-3xl pt-5 font-bold md:text-2xl text-xl text-center mb-2 dark:text-black">{{ firstName }} {{ lastName }}</h1>
+        </div> -->
+        <!-- <h1 class="lg:text-3xl pt-5 font-bold md:text-2xl text-xl text-center mb-2 dark:text-black">{{ firstName }} {{ lastName }}</h1> -->
         
-        <!-- Toggle button for profile and change password form -->
+<!--     
         <div class="text-center mb-4">
           <button @click="toggleForm" class="text-blue-500 hover:underline">
             {{ showChangePassword ? 'Back to Profile' : 'Change Password' }}
           </button>
         </div>
 
-        <!-- User Profile Form -->
+
         <div v-if="!showChangePassword">
           <form @submit.prevent="updateProfile" @keydown.enter="updateProfile" class="space-y-4">
-            <!-- Existing form fields for profile -->
+
             <div class="flex flex-col justify-center w-full">
-               <!-- Firstname Field -->
+    
               <div class="w-full  mb-4 mt-3">
                 <label for="first_name" class="mb-2 dark:text-gray-900">First Name</label>
                 <input type="text" v-model="firstName" id="first_name" class="px-4  w-full py-2 rounded-lg bg-gray-100 border border-gray-200 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-400" required />
               </div>
-              <!-- Lastname Field -->
+  
               <div class="w-full  mb-4 lg:mt-3">
                 <label for="last_name" class="mb-2 dark:text-gray-900">Last Name</label>
                 <input type="text" v-model="lastName" id="last_name" class="px-4  w-full py-2 rounded-lg bg-gray-100 border border-gray-200 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-orange-400" required />
               </div>
-              <!-- Username Field -->
+      
               <div class="w-full  mb-4 lg:mt-3">
-                <label for="username" class="mb-2 dark:text-gray-900">Username</label>
+                <label for="username" class="mb-2 dark:text-gray-900">Email</label>
                 <input v-model="username" id="username" type="text" class="px-4  w-full py-2 rounded-lg border bg-gray-200 border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-400" disabled />
-                <p class="text-sm text-gray-500 mt-1">Username cannot be changed.</p>
+                <p class="text-sm text-gray-500 mt-1">Email cannot be changed.</p>
               </div>
-              <!-- Job Position Field -->
+  
               <div class="w-full  mb-4 lg:mt-3">
                 <label for="job_position" class="mb-2 dark:text-gray-900">Job Position</label>
                 <input v-model="jobPosition" id="job_position" type="text" class="px-4  w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-400" />
               </div>
               <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
-              <!-- Address Field -->
+           
               <div class="w-full mb-4 lg:mt-3">
                 <label for="address" class="mb-2 dark:text-gray-900">Address</label>
                 <input v-model="address" id="address" type="text" class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-400" />
               </div>
 
-              <!-- Department Field -->
+     
               <div class="w-full mb-4 lg:mt-3">
                 <label for="department" class="mb-2 dark:text-gray-900">Department</label>
                 <input v-model="department" id="department" type="text" class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-30 focus:outline-none focus:ring-1 focus:ring-orange-400" />
               </div>
               </div>
               <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
-              <!-- Primary Email Field -->
+     
               <div class="w-full mb-4 lg:mt-3">
                 <label for="primary_email" class="mb-2 dark:text-gray-900">Primary Email</label>
                 <input v-model="primaryEmail" id="primary_email" type="email" class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-400" />
               </div>
 
-              <!-- Secondary Email Field -->
+       
               <div class="w-full mb-4 lg:mt-3">
                 <label for="secondary_email" class="mb-2 dark:text-gray-900">Secondary Email</label>
                 <input v-model="secondaryEmail" id="secondary_email" type="email" class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-400" />
               </div>
               </div>
-              <!-- Save Button -->
+     
               <div>
                 <button type="submit" class="w-full rounded-lg bg-orange-200 mt-5 text-black text-lg font-semibold h-12 transition-all duration-500 hover:bg-orange-400">
                   Save Changes
@@ -95,33 +95,58 @@
               </div>
             </div>
           </form>
-        </div>
+        </div> -->
 
-        <!-- Change Password Form -->
-        <div v-if="showChangePassword">
-          <form @submit.prevent="changePassword" class="space-y-4">
-            <div class="w-full  mb-4 mt-3">
-              <label for="old_password" class="mb-2 dark:text-gray-900">Old Password</label>
-              <input type="password" v-model="oldPassword" id="old_password" class="px-4  w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:ring-1 focus:ring-orange-400 outline-none" required />
-            </div>
+        <div v-if="!showChangePassword">
+    <form @submit.prevent="changePassword" class="space-y-4">
+      <div class="w-full mb-4 mt-3">
+        <label for="old_password" class="mb-2 dark:text-gray-900">Old Password</label>
+        <input
+          type="password"
+          v-model="oldPassword"
+          id="old_password"
+          class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:ring-1 focus:ring-orange-400 outline-none"
+          required
+        />
+      </div>
 
-            <div class="w-full  mb-4 lg:mt-3">
-              <label for="new_password" class="mb-2 dark:text-gray-900">New Password</label>
-              <input type="password" v-model="newPassword" id="new_password" class="px-4  w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:ring-1 focus:ring-orange-400 outline-none" required />
-            </div>
+      <div class="w-full mb-4 lg:mt-3">
+        <label for="new_password" class="mb-2 dark:text-gray-900">New Password</label>
+        <input
+          type="password"
+          v-model="newPassword"
+          id="new_password"
+          class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:ring-1 focus:ring-orange-400 outline-none"
+          required
+        />
+      </div>
 
-            <div class="w-full  mb-4 lg:mt-3">
-              <label for="confirm_password" class="mb-2 dark:text-gray-900">Confirm New Password</label>
-              <input type="password" v-model="confirmPassword" id="confirm_password" class="px-4  w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:ring-1 focus:ring-orange-400" required />
-            </div>
+      <div class="w-full mb-4 lg:mt-3">
+        <label for="confirm_password" class="mb-2 dark:text-gray-900">Confirm New Password</label>
+        <input
+          type="password"
+          v-model="confirmPassword"
+          id="confirm_password"
+          class="px-4 w-full py-2 rounded-lg border bg-gray-100 border-gray-300 focus:ring-1 focus:ring-orange-400"
+          required
+        />
+      </div>
 
-            <div>
-              <button type="submit" class="w-full rounded-lg bg-orange-200 mt-5 text-black text-lg font-semibold h-12 transition-all duration-500 hover:bg-orange-400">
-                Change Password
-              </button>
-            </div>
-          </form>
-        </div>
+      <div>
+        <button
+          type="submit"
+          :disabled="!isFormValid"
+          class="w-full rounded-lg mt-5 text-black text-lg font-semibold h-12 transition-all duration-500"
+          :class="{
+            'bg-orange-400': isFormValid,
+            'bg-gray-300 cursor-not-allowed': !isFormValid,
+          }"
+        >
+          Change Password
+        </button>
+      </div>
+    </form>
+  </div>
 
       </section>
     </div>
@@ -130,6 +155,12 @@
 
 <script>
 import axios from "axios";
+import { 
+  auth, 
+  updatePassword, 
+  EmailAuthProvider, 
+  reauthenticateWithCredential 
+} from "../firebaseApp"; 
 
 export default {
   name: "UserProfile",
@@ -148,24 +179,20 @@ export default {
       newPassword: "",
       confirmPassword: "",
       showChangePassword: false,
-      apiUrl: "https://aapistage.newalchemysolutions.com",
     };
   },
   mounted() {
     this.loadUserProfile();
   },
-watch: {
-  profileImagePreview(newVal) {
-    try {
-
-    } catch (e) {
-      if (e.name === 'QuotaExceededError') {
-        console.error("LocalStorage quota exceeded. Cannot save profile image.");
-        alert("Failed to save profile image. Storage limit exceeded.");
-      }
-    }
-  }
-},
+  computed: {
+    isFormValid() {
+      return (
+        this.oldPassword.trim() !== "" &&
+        this.newPassword.trim() !== "" &&
+        this.confirmPassword.trim() !== ""
+      );
+    },
+  },
   methods: {
     loadUserProfile() {
       this.firstName = localStorage.getItem("first_name") || "";
@@ -181,7 +208,6 @@ watch: {
 
     toggleForm() {
       this.showChangePassword = !this.showChangePassword;
-      // Reset password fields when toggling back
       if (!this.showChangePassword) {
         this.oldPassword = "";
         this.newPassword = "";
@@ -190,73 +216,68 @@ watch: {
     },
 
     async updateProfile() {
-  try {
-    const headers = JSON.parse(localStorage.getItem("headers")) || {};
-    if (!headers.Authorization) {
-      alert("Authorization token is missing. Please log in again.");
-      return;
-    }
+      try {
+        const headers = JSON.parse(localStorage.getItem("headers")) || {};
+        if (!headers.Authorization) {
+          alert("Authorization token is missing. Please log in again.");
+          return;
+        }
 
-    const payload = {
-      first_name: this.firstName,
-      last_name: this.lastName,
-      job_position: this.jobPosition || null,
-      address: this.address || null,
-      department: this.department || null,
-      primary_email: this.primaryEmail,
-      secondary_email: this.secondaryEmail || null,
-    };
+        const payload = {
+          first_name: this.firstName,
+          last_name: this.lastName,
+          job_position: this.jobPosition || null,
+          address: this.address || null,
+          department: this.department || null,
+          primary_email: this.primaryEmail,
+          secondary_email: this.secondaryEmail || null,
+        };
 
-    const response = await axios.post(`${this.apiUrl}/user_profile`, payload, { headers });
+        const response = await axios.post(`${this.apiUrl}/user_profile`, payload, { headers });
 
-    if (response.status === 200 || response.status === 201) {
-      alert("Profile updated successfully!");
-      Object.entries(payload).forEach(([key, value]) => {
-        localStorage.setItem(key, value || "");
-      });
-    }
-  } catch (error) {
-    console.error("Failed to update profile:", error);
-    const errorMessage = error.response?.data?.message || "An error occurred while updating the profile.";
-    alert(errorMessage);
-  }
-},
+        if (response.status === 200 || response.status === 201) {
+          alert("Profile updated successfully!");
+          Object.entries(payload).forEach(([key, value]) => {
+            localStorage.setItem(key, value || "");
+          });
+        }
+      } catch (error) {
+        console.error("Failed to update profile:", error);
+        const errorMessage = error.response?.data?.message || "An error occurred while updating the profile.";
+        alert(errorMessage);
+      }
+    },
 
-async changePassword() {
-  try {
-    if (this.newPassword !== this.confirmPassword) {
-      alert("New password and confirm password do not match.");
-      return;
-    }
+    async changePassword() {
+      if (this.newPassword !== this.confirmPassword) {
+        alert("New passwords do not match.");
+        return;
+      }
 
-    const headers = JSON.parse(localStorage.getItem("headers")) || {};
-    if (!headers.Authorization) {
-      alert("Authorization token is missing. Please log in again.");
-      return;
-    }
+      try {
+        const user = auth.currentUser;
+        if (!user) {
+          alert("User not authenticated. Please log in again.");
+          return;
+        }
 
-    const payload = {
-      old_password: this.oldPassword,
-      new_password: this.newPassword,
-    };
+        // Re-authenticate user
+        const credential = EmailAuthProvider.credential(user.email, this.oldPassword);
+        await reauthenticateWithCredential(user, credential);
 
-    const response = await axios.post(`${this.apiUrl}/change_password`, payload, { headers });
+        // Update password
+        await updatePassword(user, this.newPassword);
+        alert("Password updated successfully!");
 
-    if (response.status === 200) {
-      alert(response.data.message || "Password changed successfully!");
-      this.oldPassword = "";
-      this.newPassword = "";
-      this.confirmPassword = "";
-      this.toggleForm();
-    }
-  } catch (error) {
-    const errorMessage =
-      error.response?.data?.message ||
-      "An error occurred while changing the password.";
-    alert(errorMessage);
-  }
-},
-
+        // Clear form fields
+        this.oldPassword = "";
+        this.newPassword = "";
+        this.confirmPassword = "";
+      } catch (error) {
+        console.error("Error changing password:", error.message);
+        alert("Failed to change password: " + error.message);
+      }
+    },
     handleImageUpload(event) {
       const file = event.target.files[0];
       if (file) {
